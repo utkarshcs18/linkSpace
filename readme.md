@@ -2,34 +2,29 @@
 
 An end-to-end encrypted, privacy-first chat application featuring a brutalist-themed aesthetic interface.
 
-## Architecture
+## Architecture: Monolithic Server
 
-The project has been split into two entirely independent directories with zero overlapping code to ensure strict separation of concerns.
+This project uses a **Monolithic Architecture** powered by a single Express.js server (`index.js`) at the root. This server is responsible for both rendering the frontend user interface and handling the backend API routing.
 
-### 1. `/frontend`
-Holds all client-side code, user interface, and static assets.
-- **`index.js`**: The Express server that runs the frontend UI.
-- **`views/`**: EJS templates (e.g., the 8 interactive STAMP UI effects).
-- **`public/`**: Vanilla CSS (`styles.css`) and Vanilla JS (`script.js`) handling UI animations and aesthetics.
-
-**To run the frontend:**
-```bash
-cd frontend
-node index.js # Runs on http://localhost:3000
-```
-
-### 2. `/backend`
-Holds all server-side architecture, APIs, authentication, real-time WebSockets, and database interactions.
-- **`index.js`**: The Express API entry point.
-- **`config/`, `controllers/`, `middleware/`, `models/`, `routes/`**: Standard MVC layout for backend business logic.
+### Directory Structure
+- **`index.js`**: The unified Express server (handles both `/` for UI and `/api/*` for the backend).
+- **`views/`**: Frontend EJS templates (UI components).
+- **`public/`**: Frontend static assets (Vanilla CSS in `styles.css`, Vanilla JS in `script.js`).
+- **`config/`, `controllers/`, `middleware/`, `models/`, `routes/`**: Backend business logic and MVC architecture.
 - **`prisma/`**: Database schema and ORM setup.
-- **`.env`**: Database URIs and JWT secrets.
+- **`.env`**: Global environment variables for the entire app.
 
-**To run the backend:**
+### How to Run
+Since everything is consolidated, you only need to start one server:
+
 ```bash
-cd backend
-node index.js # Runs on http://localhost:5000
+npm start
+# OR
+node index.js
 ```
+The server will run on `http://localhost:3000`.
+- Open `http://localhost:3000` in your browser to see the Frontend UI.
+- Access `http://localhost:3000/api/status` to hit the Backend API.
 
 ## Aesthetic & Design
 The frontend uses an **interactive brutalism** design.
