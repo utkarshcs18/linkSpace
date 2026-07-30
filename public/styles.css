@@ -26,14 +26,14 @@ body {
 }
 
 body::before {
-  content: "Link Space";
+  content: "linkSpace";
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: 'Archivo Black', sans-serif;
-  font-size: clamp(10rem, 25vw, 30rem);
-  color: rgba(10, 10, 10, 0.03);
+  font-size: clamp(8rem, 18vw, 25rem);
+  color: rgba(255, 77, 0, 0.04);
   z-index: -1;
   pointer-events: none;
   white-space: nowrap;
