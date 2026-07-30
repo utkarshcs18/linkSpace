@@ -1,37 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* === Effect 1: Rubber Stamp === */
-  const btnStamp = document.getElementById('btn-stamp');
+    const btnStamp = document.getElementById('btn-stamp');
   const msgStamp = document.getElementById('msg-stamp');
   const stampGraphic = document.getElementById('stamp-graphic');
 
   function triggerStamp() {
-      // Reset
       stampGraphic.classList.remove('stamped');
       msgStamp.classList.remove('thud');
       
-      // Force reflow
       void stampGraphic.offsetWidth;
 
-      // Trigger
       stampGraphic.classList.add('stamped');
       
-      // Thud effect on impact (~150ms after animation start)
       setTimeout(() => {
           msgStamp.classList.add('thud');
           setTimeout(() => {
               msgStamp.classList.remove('thud');
-          }, 50); // fast recovery
+          }, 50); 
       }, 120);
   }
 
   if (btnStamp) {
       btnStamp.addEventListener('click', triggerStamp);
-      // Auto trigger on load
       setTimeout(triggerStamp, 500);
   }
 
-  /* === Effect 2: Redacted Reveal === */
   const btnDecrypt = document.getElementById('btn-decrypt');
   const redactedLines = document.querySelectorAll('.redacted-line');
 
@@ -43,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
           setTimeout(() => {
               line.classList.add('revealed');
           }, delay);
-          // Stagger delays
           delay += 150 + Math.random() * 100;
       });
   }
@@ -53,22 +45,18 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(triggerDecrypt, 1000);
   }
 
-  /* === Effect 3: Slab Press === */
-  // Purely CSS driven using :active, no JS needed for the core effect.
-  // We just add a log to show it works manually.
-  const slabBtn = document.getElementById('slab-btn');
+    const slabBtn = document.getElementById('slab-btn');
   if (slabBtn) {
       slabBtn.addEventListener('click', () => {
           console.log("Slab pressed!");
       });
   }
 
-  /* === Effect 4: Scanline Sweep === */
   const scanCard = document.getElementById('scan-card');
   
   function triggerScan() {
       scanCard.classList.remove('scanning');
-      void scanCard.offsetWidth; // Reflow
+      void scanCard.offsetWidth; 
       scanCard.classList.add('scanning');
   }
 
@@ -81,11 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
       scanCard.addEventListener('animationend', () => {
           scanCard.classList.remove('scanning');
       });
-      // Auto trigger on load
       setTimeout(triggerScan, 800);
   }
 
-  /* === Effect 5: Glitch Verify === */
   const btnVerify = document.getElementById('btn-verify');
   const verifyCode = document.getElementById('verify-code');
   const originalCode = "4F2A 9B1C 88DE";
@@ -94,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function triggerVerify() {
       verifyCode.classList.remove('verified');
       let iterations = 0;
-      const maxIterations = 20; // ~400ms at 20ms interval
+      const maxIterations = 20; 
       
       const interval = setInterval(() => {
           verifyCode.innerText = originalCode.split('').map(char => {
@@ -102,7 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
               return chars[Math.floor(Math.random() * chars.length)];
           }).join('');
           
-          // Random slight offset for mechanical glitch feel
           const xOffset = Math.random() * 4 - 2;
           const yOffset = Math.random() * 4 - 2;
           verifyCode.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
@@ -121,7 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
       btnVerify.addEventListener('click', triggerVerify);
   }
 
-  /* === Effect 6: Hard Snap === */
   const btnSnap = document.getElementById('btn-snap');
   const views = document.querySelectorAll('.snap-view');
   let currentView = 0;
@@ -136,7 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
       btnSnap.addEventListener('click', triggerSnap);
   }
 
-  /* === Effect 7: Typewriter Thud === */
   const btnType = document.getElementById('btn-type');
   const typeContainer = document.getElementById('typewriter-text');
   const typeCursor = document.getElementById('typewriter-cursor');
@@ -153,7 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
               typeContainer.innerText += typeText.charAt(i);
               i++;
               
-              // Mechanical jitter per char
               const jitter = Math.random() * 2 - 1;
               typeContainer.parentElement.style.transform = `translateY(${jitter}px)`;
               
@@ -175,6 +157,4 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(triggerTypewriter, 1200);
   }
 
-  /* === Effect 8: Grid Shift === */
-  // Purely CSS driven using :hover, no JS required.
 });
