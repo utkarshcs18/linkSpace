@@ -21,12 +21,12 @@ app.get('/', (req, res) => {
 // const authRoutes = require('./routes/auth.routes');
 // app.use('/api/auth', authRoutes);
 
-app.get('/api/status', (req, res) => {
+app.get('/status', (req, res) => {
     res.json({ message: 'linkSpace Secure Chat API is running.' });
 });
 
-// --- Start Server ---
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`linkSpace (STAMP) Monolithic Server running on http://localhost:${PORT}`);
+    console.log(`Server running on http://localhost:${PORT}`);
 });
