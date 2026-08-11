@@ -7,18 +7,15 @@ const conversationSchema = new mongoose.Schema(
       enum: ["direct", "group"],
       required: true,
     },
-
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
-
     lastMessageId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Message",
       default: null,
     },
-
     lastMessageAt: {
       type: Date,
       default: null,
