@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const btnStamp = document.getElementById('btn-stamp');
+  const btnStamp = document.getElementById('btn-stamp');
   const msgStamp = document.getElementById('msg-stamp');
   const stampGraphic = document.getElementById('stamp-graphic');
 
