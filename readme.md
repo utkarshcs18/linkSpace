@@ -3,7 +3,6 @@
 **A sealed messenger: ciphertext on the wire, private keys on the device, no phone numbers.**
 
 linkSpace is a real-time 1:1 and group chat where the server is a relay, not a reader. Identity is a 12-character hex friend code. Encryption happens in the browser with Web Crypto. The database stores envelopes, not conversations.
-
 If you work on WhatsApp, Messenger, or any product that has to get E2EE right at scale — this repo is a compact, honest implementation of the hard parts: **device-held identity keys, sealed payloads, group fan-out, safety numbers, and a server that cannot decrypt.**
 
 ---
@@ -102,7 +101,6 @@ PORT=3000
 NODE_ENV=development
 MONGO_URI=mongodb://your_uri
 JWT_SECRET=change-me-to-a-long-random-string
-CLIENT_URL=http://localhost:3000
 ```
 
 ```bash
