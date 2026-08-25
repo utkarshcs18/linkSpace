@@ -121,5 +121,5 @@ This repo is a good conversation starter for:
 - **Transport vs payload** — TLS is not E2EE; cookies and CSP still matter
 - **Product constraints** — presence, groups, images, and key backup without breaking the seal
 
-Built by [utkarshcs18](https://github.com/utkarshcs18). 
+Built by [utkarshcs18](https://github.com/utkarshcs18).
 If you work on WhatsApp or Messenger and want to talk about sealed systems, open an issue or reach out from the GitHub profile.
