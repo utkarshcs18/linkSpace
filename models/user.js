@@ -9,10 +9,6 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
       trim: true,
     },
-    emailVerified: {
-      type: Boolean,
-      default: false,
-    },
     userCode: {
       type: String,
       required: true,
@@ -20,6 +16,7 @@ const userSchema = new mongoose.Schema(
       uppercase: true,
       immutable: true,
       index: true,
+      match: /^[0-9A-F]{12}$/,
     },
     displayName: {
       type: String,
@@ -32,13 +29,17 @@ const userSchema = new mongoose.Schema(
       required: true,
       select: false,
     },
+    identityPublicKey: {
+      type: mongoose.Schema.Types.Mixed,
+      default: null,
+    },
     avatar: {
       type: String,
       default: null,
     },
     bio: {
       type: String,
-      maxlength: 160,
+      maxlength: 3000,
       default: "",
     },
     status: {
@@ -55,6 +56,14 @@ const userSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+userSchema.set("toJSON", {
+  transform(_doc, ret) {
+    delete ret.passwordHash;
+    delete ret.__v;
+    return ret;
+  },
+});
 
 const User = mongoose.model("User", userSchema);
 

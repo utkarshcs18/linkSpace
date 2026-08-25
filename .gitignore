@@ -1,15 +1,16 @@
-# Custom User Files
-description.txt
+# Secrets and env
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets.json
 
-# Node.js dependencies
+# Node
 node_modules/
 jspm_packages/
-
-# Environment variables
-.env
-.env.test
-.env.production
-.env.local
+package-lock.json.bak
 
 # Logs
 logs/
@@ -22,12 +23,12 @@ pids/
 *.seed
 *.pid.lock
 
-# Coverage and test output
+# Coverage and tests
 coverage/
 .nyc_output/
 lib-cov/
 
-# Build and deployment output
+# Build / deploy
 dist/
 build/
 out/
@@ -40,8 +41,18 @@ out/
 .stylelintcache
 .cache/
 .parcel-cache/
+.turbo/
 
-# OS generated files
+# Local uploads / temp
+uploads/
+tmp/
+temp/
+*.sqlite
+*.sqlite3
+*.db
+*.db3
+
+# OS
 .DS_Store
 .DS_Store?
 ._*
@@ -60,7 +71,7 @@ Thumbs.db
 desktop.ini
 $RECYCLE.BIN/
 
-# IDEs and Editors
+# Editors
 .vscode/
 .idea/
 *.suo
@@ -68,10 +79,7 @@ $RECYCLE.BIN/
 *.njsproj
 *.sln
 *.sw?
+*~
 
-# Database / Prisma
-/generated/prisma
-*.sqlite
-*.sqlite3
-*.db
-*.db3
+# Misc
+description.txt

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="auth-body">
+    <div class="hazard-bar" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <header class="auth-header">
+        <p class="live-strip">LIVE // E2EE DEFAULT // NO PHONE NUMBERS // CIPHERTEXT ONLY</p>
+        <div class="brand-lock">
+            <span class="brand-mark">SEALED</span>
+            <h1>linkSpace</h1>
+        </div>
+        <p>Sealed channels. Hex identities. Private keys never leave this device.</p>
+    </header>
+
+    <main class="auth-grid">
+        <section class="demo-section scan-card clearance-card" id="scan-card">
+            <div class="scanline"></div>
+            <h2>Clearance</h2>
+            <p class="status-chip">ACCESS: OMEGA</p>
+            <p class="demo-desc">Create a vault or return to an existing one. Your 12-digit hex code is how friends find you — not a phone number.</p>
+            <div class="typewriter-msg">
+                <span id="typewriter-text" style="white-space: pre-wrap; font-weight: bold;"></span><span id="typewriter-cursor" class="typewriter-cursor blink"></span>
+            </div>
+            <ul class="clearance-meta">
+                <li><span>Protocol</span><span>E2EE / P-256</span></li>
+                <li><span>Identity</span><span>Hex friend code</span></li>
+                <li><span>Private key</span><span>Device only</span></li>
+                <li><span>Server</span><span>Ciphertext relay</span></li>
+            </ul>
+        </section>
+
+        <section class="demo-section" id="auth-panel">
+            <div class="auth-tabs">
+                <button type="button" class="btn-brutal auth-tab active" data-mode="login" id="tab-login">Enter</button>
+                <button type="button" class="btn-brutal auth-tab" data-mode="signup" id="tab-signup">Create</button>
+            </div>
+
+            <form id="auth-form" autocomplete="off">
+                <label class="field signup-only hidden">
+                    <span>Display name</span>
+                    <input type="text" name="displayName" maxlength="50" placeholder="AGENT K">
+                </label>
+                <label class="field">
+                    <span>Email</span>
+                    <input type="email" name="email" required placeholder="you@vault.local">
+                </label>
+                <label class="field">
+                    <span>Password</span>
+                    <input type="password" name="password" required minlength="10" placeholder="min 10 characters">
+                </label>
+                <p id="auth-error" class="form-error" hidden></p>
+                <p id="auth-hint" class="demo-desc">Login loads the identity key stored in this browser. A new device needs a key backup import.</p>
+                <button type="submit" class="slab-btn" id="slab-btn">Initiate Transfer</button>
+            </form>
+
+            <div class="key-tools">
+                <button type="button" class="btn-brutal" id="btn-import">Import key backup</button>
+                <input type="file" id="key-file" accept="application/json" hidden>
+            </div>
+        </section>
+    </main>
+
+    <script src="/crypto.js"></script>
+    <script src="/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="app-body">
+    <div class="hazard-bar" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <aside class="rail">
+        <header class="rail-head">
+            <p class="live-strip">CHANNEL OPEN</p>
+            <h1>linkSpace</h1>
+            <div id="me-code" class="verify-code">---- ---- ----</div>
+            <p class="tiny">Share this hex code. Friends paste it in Search friend.</p>
+            <button type="button" class="btn-brutal" id="btn-copy-code">Copy code</button>
+        </header>
+
+        <details class="nav-drop">
+            <summary>Search friend</summary>
+            <form id="search-form" class="search-box">
+                <label>
+                    <span>Friend code</span>
+                    <input type="text" id="search-code" maxlength="20" placeholder="A1B2-C3D4-E5F6" autocomplete="off">
+                </label>
+                <button type="submit" class="btn-brutal">Initialize chat</button>
+                <p id="search-error" class="form-error" hidden></p>
+            </form>
+        </details>
+
+        <details class="nav-drop">
+            <summary>New group</summary>
+            <form id="group-form" class="search-box">
+                <label>
+                    <span>Group name</span>
+                    <input type="text" id="group-name" maxlength="40" placeholder="Group name" autocomplete="off">
+                </label>
+                <label>
+                    <span>Member hex codes</span>
+                    <input type="text" id="group-codes" placeholder="CODE, CODE" autocomplete="off">
+                </label>
+                <button type="submit" class="btn-brutal">Create group</button>
+                <p id="group-error" class="form-error" hidden></p>
+            </form>
+        </details>
+
+        <details class="nav-drop">
+            <summary>Bio</summary>
+            <form id="bio-form" class="search-box">
+                <label>
+                    <span>About you</span>
+                    <textarea id="bio-input" rows="3" placeholder="Up to 150 words"></textarea>
+                </label>
+                <p id="bio-count" class="tiny">0 / 150 words</p>
+                <p id="bio-error" class="form-error" hidden></p>
+                <button type="submit" class="btn-brutal">Save bio</button>
+            </form>
+        </details>
+
+        <details class="nav-drop nav-drop-locked" id="friends-drop">
+            <summary>Friends</summary>
+            <ul class="contact-list" id="contact-list"></ul>
+        </details>
+
+        <footer class="rail-foot">
+            <p id="me-name" class="tiny"></p>
+            <button type="button" class="btn-brutal" id="btn-export">Export keys</button>
+            <button type="button" class="btn-brutal" id="btn-logout">Seal out</button>
+        </footer>
+    </aside>
+
+    <section class="thread" id="empty-thread">
+        <div class="demo-section">
+            <h2>No channel open</h2>
+            <p class="demo-desc">Search a hexadecimal friend code to initialize an end-to-end sealed chat. The server only stores ciphertext.</p>
+            <p class="status-chip">AWAITING TARGET</p>
+        </div>
+    </section>
+
+    <section class="thread hidden" id="active-thread">
+        <header class="thread-head">
+            <div class="thread-bar">
+                <div class="thread-who">
+                    <div class="thread-avatar" id="thread-avatar">·</div>
+                    <div class="thread-identity">
+                        <h2 id="peer-name">SUBJECT</h2>
+                        <p id="peer-status" class="status-pill">[OFFLINE]</p>
+                    </div>
+                </div>
+                <div class="thread-safe">
+                    <span class="safe-label">Safety</span>
+                    <div id="verify-code" class="verify-code">---- ---- ----</div>
+                    <button type="button" class="btn-brutal" id="btn-verify">Verify</button>
+                </div>
+            </div>
+            <p id="peer-bio" class="tiny peer-bio"></p>
+            <div class="thread-actions">
+                <form id="add-member-form" class="thread-inline hidden">
+                    <input type="text" id="add-member-code" maxlength="20" placeholder="Member code" autocomplete="off">
+                    <button type="submit" class="btn-brutal">Add</button>
+                </form>
+                <form id="group-bio-form" class="thread-inline hidden">
+                    <input type="text" id="group-bio-input" maxlength="3000" placeholder="Group bio (owner)">
+                    <button type="submit" class="btn-brutal">Save</button>
+                </form>
+            </div>
+        </header>
+
+        <div class="messages" id="messages"></div>
+
+        <form id="composer" class="composer">
+            <input type="text" id="msg-input" maxlength="1800" placeholder="Type a sealed message" autocomplete="off">
+            <input type="file" id="img-input" accept="image/*" hidden>
+            <button type="button" class="btn-brutal" id="btn-image">Image</button>
+            <button type="submit" class="btn-brutal" id="btn-stamp">Send</button>
+        </form>
+    </section>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/crypto.js"></script>
+    <script src="/app.js"></script>
+</body>
+</html>
