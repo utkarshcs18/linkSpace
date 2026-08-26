@@ -233,6 +233,34 @@ header {
   box-shadow: 0 0 0 #171513;
 }
 
+.slab-btn {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  background-color: var(--ink);
+  color: var(--accent-color);
+  border: var(--border-thick);
+  padding: 1.15rem 1.5rem;
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 8px 8px 0 var(--accent-color);
+  position: relative;
+  transition: transform 40ms linear, box-shadow 40ms linear, background-color 40ms linear, color 40ms linear;
+  letter-spacing: 0.04em;
+  border-radius: 999px;
+}
+
+.slab-btn:hover {
+  background-color: var(--accent-color);
+  color: #fff;
+  box-shadow: 8px 8px 0 var(--ink);
+}
+
+.slab-btn:active {
+  transform: translate(8px, 8px);
+  box-shadow: 0 0 0 var(--ink);
+}
+
 .msg-container {
   border: var(--border-thick);
   padding: 1rem 1.1rem;
